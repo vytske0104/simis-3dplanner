@@ -71,13 +71,13 @@ export class Main{
   		window.languages=new Languages([{key:"ru"},{key:"en"}])
   		languages.key="en"
 
-  		window.localS=new LocalStorage(function(){},"3dplaner_v1")
+  		/* window.localS=new LocalStorage(function(){},"3dplaner_v1")
 
   		window.localSInfo=new LocalStorage(function(){},"3dplaner_info_v1")
   		
 
   		if(window.localS.object.info==undefined)window.localS.object.info={};
-  		if(window.localS.object.debug==undefined)window.localS.object.debug = false;	
+  		if(window.localS.object.debug==undefined)window.localS.object.debug = false;	 */
 
 
 
