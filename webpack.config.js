@@ -4,9 +4,10 @@ const webpack = require('webpack');
  let conf = {
   	entry: './src/index.js',
   	output: {
-    	path: path.resolve(__dirname, 'build'),
-		filename: 'planer.min.js',
-		publicPath: 'build/'
+    	path: path.resolve(__dirname, 'public'),
+		//filename: 'planer.min.js',
+		filename: 'index.html',
+		publicPath: 'public/'
   	},
   	devServer: {
 		overlay: true
