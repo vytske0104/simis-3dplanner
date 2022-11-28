@@ -23,15 +23,10 @@ export function LocalStorage(fun,_key) {
 	} */
 	
 	// если localStorage пуст, записываем обьект
-	this.getStartObj = function() {
-		/*var obj = {
-			activ:false,
-			dubag:false,
-			menu:{},
-			xz:{}
-		};*/
-		return {}//obj;
-	} 
+	/* this.getStartObj = function() {
+		
+		return {};
+	}  */
 
 	// сохраняем в localStorage данные
 	/* this.save = function() {		
