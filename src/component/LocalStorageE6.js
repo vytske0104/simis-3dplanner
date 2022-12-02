@@ -1,5 +1,5 @@
-export function LocalStorage(fun,_key) {
 
+export function LocalStorage(fun,_key) {
 	this.fun = fun;
 	var self = this;
 	this.object;
@@ -7,7 +7,7 @@ export function LocalStorage(fun,_key) {
 	this.object; // тут храняться все данные с localStorage
 	var b;
 	// инициализация localStorage
-	/* this.initLoad=function() {
+	this.initLoad=function() {
 		b=true;
 		this.object = window.localStorage[this.key];
 		if(this.object == "undefined")b=false;
@@ -20,24 +20,32 @@ export function LocalStorage(fun,_key) {
 			this.object = jQuery.parseJSON(this.object); // если localStorage не пуст записываем содержимое предварительно
 		}	
 		if(this.fun)self.fun();
-	} */
+	}
 	
 	// если localStorage пуст, записываем обьект
-	/* this.getStartObj = function() {
-		
-		return {};
-	}  */
+	this.getStartObj = function() {
+		/*var obj = {
+			activ:false,
+			dubag:false,
+			menu:{},
+			xz:{}
+		};*/
+		return {}//obj;
+	}
 
 	// сохраняем в localStorage данные
-	/* this.save = function() {		
+	this.save = function() {		
 		window.localStorage[this.key] = JSON.stringify(self.object);
-	} */
+	}
 
 	// сохраняем в localStorage данные
-	/* this.clear = function() {
+	this.clear = function() {
 		window.localStorage[this.key] = undefined;
 	}
-	self.initLoad(); */
+	self.initLoad();
 	//setTimeout(function() {self.initLoad();}, 1);
-
+		
 }
+
+
+

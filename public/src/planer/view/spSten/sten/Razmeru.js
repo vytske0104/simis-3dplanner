@@ -241,8 +241,8 @@ export class Razmeru {
                 let o={}
                 o.width=this.aaX1[i+1]-this.aaX1[i];
                 o.x=this.aaX1[i]
-                o.h=this.aaY1[i]
-                o.h1=this.aaY1[i+1]
+                o.height=this.aaY1[i]
+                o.height1=this.aaY1[i+1]
 
                 point.x=this.aaX1[i];
                 point.y=this.aaY1[i];
@@ -250,7 +250,7 @@ export class Razmeru {
                 point1.x=this.aaX1[i+1];
                 point1.y=this.aaY1[i+1];
 
-                o.angel=-calc.getAngle(point,point1) *180/Math.PI 
+                o.angle=-calc.getAngle(point,point1) *180/Math.PI 
 
                 a.push(o)
 

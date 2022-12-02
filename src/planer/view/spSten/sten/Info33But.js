@@ -468,7 +468,7 @@ export class RPoint2 {
 
             this.tLabel1.cont3d.position.z=-point1.z+ott;
             this.tLabel1.cont3d.position.x=dist-ott;
-            trace(this._mast,this.tLabel.cont3d.position.y)
+            
             
             this.tLabel.cont3d.position.y=10-10*this._mast*facade._mastYmn
             this.tLabel1.cont3d.position.y=10-10*this._mast*facade._mastYmn  
@@ -479,7 +479,7 @@ export class RPoint2 {
     set mast(v) {        
         if(this._mast!=v){ 
             this._mast=v;
-            trace(">>",this._mast)
+            
             for (var i = 0; i < this.array.length; i++) {
                 this.array[i].mast=v*facade._mastYmn;
                 this.array[i].tLabel.cont3d.position.z=-10+10*this._mast*facade._mastYmn
