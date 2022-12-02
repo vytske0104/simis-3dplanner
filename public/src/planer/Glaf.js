@@ -43,7 +43,7 @@ export class Glaf  {
         var oSp=o.json
         
        
-        var alpha =oSp.scene.visi3D.alphaAd 
+        var alpha =true//oSp.scene.visi3D.alphaAd 
         //порезаный от пикси вювер        
 		this.visi3D = new MVisi3D(this.contHTML, null, dcmParam.mobile, true, true, true, alpha);		
 	 	this.visi3D.yes3d = true;       	
@@ -229,29 +229,30 @@ export class Glaf  {
         var sp,st,s,pp
         this.save=function(){ 
             let o={}
-            o.array=[]
+            o.measurements=[]
             sp=this.view.facade.sp
             var a=0
             var distans=0
             var a1=0
             var a2=0
-           
-            for (var i = 0; i < sp.arrSplice.length; i++) {
-                if(sp.arrSplice[i].life==true){
-                    if(sp.arrSplice[i].boolAree==true){
-                        a+=sp.arrSplice[i].arrayClass[0].arrGrani[0].area
+            var arrSplice=this.getPoradok(sp.arrSplice)
+            for (var i = 0; i < arrSplice.length; i++) {
+                if(arrSplice[i].life==true){
+                    if(arrSplice[i].boolAree==true){
+                        a+=arrSplice[i].arrayClass[0].arrGrani[0].area
 
                         let oo={}
-                        oo.area=sp.arrSplice[i].arrayClass[0].arrGrani[0].area;
-                        oo.distans=sp.arrSplice[i].ss3d.tCompArrow.distans;
+                        oo.angle=arrSplice[i].angelDin
+                        oo.area=arrSplice[i].arrayClass[0].arrGrani[0].area;
+                        oo.distance=arrSplice[i].ss3d.tCompArrow.distans;
 
-                        oo.windows=sp.arrSplice[i].windows.getInfo()
+                        oo.windows=arrSplice[i].windows.getInfo()
 
-                        oo.osi=sp.arrSplice[i].razmeru.getInfo()
+                        oo.osi=arrSplice[i].razmeru.getInfo()
                         
 
 
-                        s=sp.arrSplice[i];
+                        s=arrSplice[i];
                         for (var j = 0; j < s.addPoint1.arrSHron.length; j++) {
                             if(s.addPoint1.arrSHron[j].sten.uuid!=s.uuid){
                                 pp=s.addPoint1.arrSHron[j].sten.addPoint1
@@ -259,23 +260,29 @@ export class Glaf  {
                         }
                         if(pp==undefined)return
                         
-                        oo.angel=-Math.round(calc.getTreeAngel(
+                        /*oo.angel=-Math.round(calc.getTreeAngel(
                             s.addPoint.position,
                             s.addPoint1.position,
                             pp.position)*180/Math.PI)
 
-                        if(Math.abs(Math.abs(oo.angel)-90)<2){
+                        if(Math.abs(Math.abs(oo.angle)-90)<2){
                             
-                            if(oo.angel>0){
+                            if(oo.angle>0){
                                 a1+=1
                             }else{
                                 a2+=1
                             }
+                        }*/
+
+                        if(oo.angle>0){
+                            a1+=1
+                        }else{
+                            a2+=1
                         }
 
 
-                        o.array.push(oo)
-                        distans+=oo.distans;
+                        o.measurements.push(oo)
+                        distans+=oo.distance;
                     }                      
                 }
             }
@@ -283,11 +290,59 @@ export class Glaf  {
             o.a2=a2
             o.area=a
             o.distans=distans
-            trace("object LosalSave==",o);        
+            trace(o)     
             localSInfo.object=o;
             localSInfo.save()
               
         }
+
+        this.getPoradok=function(aS){
+            let a=[];
+
+            var pF=aS[0]._addPoint;
+            var sten=aS[0];
+            for (var i = 0; i < aS.length; i++) {
+                
+                a.push(sten)
+                sten=this.getSten(sten.addPoint1,aS)
+            }
+            var st,st1,st2
+
+            for (var i = 0; i < a.length; i++) {
+                
+              
+
+                st1=a[i]
+
+                let pp=(i-1)
+                if(pp<0)pp=a.length-1
+                st=a[pp]
+                let pp1=(i+1)
+                if(pp1==a.length)pp1=0
+                st2=a[pp1]
+
+
+                
+
+                let angel=calc.getTreeAngel(st._addPoint.position,st1._addPoint.position,st2._addPoint.position)
+                angel=-angel*180/Math.PI
+                st1.angelDin=angel
+             
+
+            }
+
+            return a;
+        }
+
+        this.getSten=function(p,aS){
+            for (var i = 0; i < aS.length; i++) {
+                if(aS[i]._addPoint.uuid==p.uuid)return aS[i]
+            }
+            return null;
+        }
+
+
+
 
 
 

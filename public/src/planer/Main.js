@@ -118,7 +118,7 @@ export class Main{
 
 
   		window.tStyle= new TStyle();
-  		document.body.style.backgroundColor = "#303841"
+  		document.body.style.backgroundColor = "#303841";
   		window.tStyle._gage=0.1
 
    		window.mhbd=new MHBDPHP(this);
