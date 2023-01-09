@@ -291,6 +291,10 @@ export class Glaf  {
             o.area=a
             o.distans=distans
             trace(o)     
+	    if (window.parent) {
+                console.log('yep', o, window.parent);
+                window.parent.postMessage(o, '*');
+            }
             localSInfo.object=o;
             localSInfo.save()
               
