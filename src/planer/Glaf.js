@@ -290,7 +290,10 @@ export class Glaf  {
             o.a2=a2
             o.area=a
             o.distans=distans
-            trace(o)     
+            trace(o)
+	    if (window.parent) {
+                window.parent.postMessage(o, '*');
+            }
             localSInfo.object=o;
             localSInfo.save()
               
