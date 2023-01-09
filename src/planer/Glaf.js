@@ -292,6 +292,7 @@ export class Glaf  {
             o.distans=distans
             trace(o)
 	    if (window.parent) {
+                console.log('Posting message', o);
                 window.parent.postMessage(o, '*');
             }
             localSInfo.object=o;
